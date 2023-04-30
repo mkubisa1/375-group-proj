@@ -1,7 +1,6 @@
 #ifndef EDGE
 #define EDGE
-
-#include <string>
+#include <iostream>
 
 class Edge {
     public:
@@ -26,6 +25,8 @@ class Edge {
             alreadyExists = other.alreadyExists;
             boresUnder = other.boresUnder;
         }
+
+        void show() { std::cout << "weight = " << weight << "; alreadyExists = " << alreadyExists << "; boresUnder = " << boresUnder << std::endl; }
 };
 
 #endif
