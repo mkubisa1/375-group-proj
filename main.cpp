@@ -4,6 +4,7 @@
 #include <string>
 #include <queue>
 #include <algorithm>
+#include <stack>
 
 std::vector<Edge> defineGraph() {
     // In the graph implementation, nodes are implicitly represented by vector indeces. A node in turn represents a building on campus as defined in the spreadsheet.
@@ -146,6 +147,45 @@ std::vector<Edge> prim(std::vector<Edge> input) {
     return mst;
 }
 
+int find(std::vector<int> &parent, int i) {
+    if (parent[i] != i)
+        parent[i] = find(parent, parent[i]);
+    return parent[i];
+}
+
+void Union(std::vector<int> &parent, int x, int y) {
+    int xroot = find(parent, x);
+    int yroot = find(parent, y);
+    parent[xroot] = yroot;
+}
+
+std::vector<Edge> kruskal(std::vector<Edge> &edges) {
+    std::vector<Edge> mst;
+    int e = 0; 
+    int i = 0; 
+    int V = 13;
+    std::sort(edges.begin(), edges.end(), compareEdges);
+
+    std::vector<int> parent(V);
+    for (int v = 0; v < V; ++v)
+        parent[v] = v;
+
+    while (e < V - 1 && i < edges.size()) {
+        Edge next_edge = edges[i++];
+
+        int x = find(parent, next_edge.src);
+        int y = find(parent, next_edge.dst);
+
+        if (x != y) {
+            mst.push_back(next_edge);
+            Union(parent, x, y);
+            e++;
+        }
+    }
+
+    return mst;
+}
+
 int main() {
 
     std::vector<Edge> baseGraph = defineGraph();
@@ -154,5 +194,9 @@ int main() {
     std::vector<Edge> primMST = prim(baseGraph);
     for(int i = 0; i < primMST.size(); i++) { primMST.at(i).show();}
 
+    std::vector<Edge> kruskalMST = kruskal(baseGraph);
+    std::cout << std::endl << std::endl << std::endl;
+    for(int i = 0; i < kruskalMST.size(); i++) { kruskalMST.at(i).show();}
+    
     return 0;
 }

@@ -17,6 +17,7 @@ class Edge {
             alreadyExists = ae;
 
             // incorporate boresUnder into the length property, to effectively make it a measure of how difficult it would be to make the tunnel
+            length = length * !alreadyExists;
             length = length + (length*boresUnder);
         }
 
@@ -28,6 +29,7 @@ class Edge {
             alreadyExists = false;
 
             // incorporate boresUnder into the length property, to effectively make it a measure of how difficult it would be to make the tunnel
+            length = length *!alreadyExists;
             length = length + (length*boresUnder);
         }
         
