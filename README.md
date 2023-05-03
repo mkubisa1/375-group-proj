@@ -1,8 +1,10 @@
 # 375 Project – Connecting the Brain
 * Team members: Benjamin Fox; Matthew Kubisa
 * Project type: “Propose a new method or combine existing algorithms (including the ones that are covered or not covered by this course) with implementation for solving a practical problem.”
+* Topics: Prim’s Algorithm; Kruzkal’s Algorithm; Minimum spanning trees
 
-Topics: Prim’s Algorithm; Kruzkal’s Algorithm; Minimum spanning trees
+## Execution
+This project uses a makefile. To run, enter the project directory and run `make; ./main`. 
 
 ## Problem
 Some buildings on the main campus are connected to each other from the inside. For others, however, it is necessary to go outside to move between them. Having a means of traveling through buildings while always staying indoors has benefits including avoiding rain/snow and more safe travel at night. To achieve this, assume that the university wants to have all buildings on the main campus connected by a system of tunnels.
