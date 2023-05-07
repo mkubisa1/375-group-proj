@@ -128,24 +128,31 @@ std::vector<Edge> prim(std::vector<Edge> input) {
     }
 
     while(!pq.empty()) {
-        Edge e = pq.top();
-        pq.pop();
-        if(visited[e.dst]) { continue; }
+    Edge e = pq.top();
+    pq.pop();
+    if(visited[e.dst] && visited[e.src]) { continue; }
 
+    int next_node;
+    if (!visited[e.dst]) {
         visited[e.dst] = true;
-        mst.push_back(e);
+        next_node = e.dst;
+    } else {
+        visited[e.src] = true;
+        next_node = e.src;
+    }
+    mst.push_back(e);
 
-        for(int i = 0; i < input.size(); i++) { // for each original edge
-            if((input.at(i).src == e.dst) || (input.at(i).dst == e.dst)) {  // if edge involves 
-                if (visited[i] == false) {  // if it's not already visited
-                    pq.push(input.at(i));
-                }
+    for(int i = 0; i < input.size(); i++) {
+        if((input.at(i).src == next_node) || (input.at(i).dst == next_node)) {
+            if ((!visited[input.at(i).src] || !visited[input.at(i).dst])) {
+                pq.push(input.at(i));
             }
         }
     }
-
+}
     return mst;
 }
+
 
 int find(std::vector<int> &parent, int i) {
     if (parent[i] != i)
@@ -182,7 +189,6 @@ std::vector<Edge> kruskal(std::vector<Edge> &edges) {
             e++;
         }
     }
-
     return mst;
 }
 
