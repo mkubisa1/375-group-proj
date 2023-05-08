@@ -198,10 +198,12 @@ int main() {
 
     // run and show prim algorithm
     std::vector<Edge> primMST = prim(baseGraph);
+    std::cout << "Prim result:" << std::endl;
     for(int i = 0; i < primMST.size(); i++) { primMST.at(i).show();}
 
     std::vector<Edge> kruskalMST = kruskal(baseGraph);
     std::cout << std::endl << std::endl << std::endl;
+    std::cout << "Kruzkal result:" << std::endl;
     for(int i = 0; i < kruskalMST.size(); i++) { kruskalMST.at(i).show();}
     
     return 0;
