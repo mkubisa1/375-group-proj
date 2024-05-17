@@ -83,7 +83,7 @@ In the special case that the graph is not connected, Kruskal's algorithm would s
 ## Results
 Using both Prim's and Kruskal's algorithms (they each provide the same result), our program created the minimum spanning tree shown below:
 
-[Results graph](./375-result-graph.jpg)
+![Results graph](./375-result-graph.jpg)
 
 The nodes correlate with building groups as such:
 
